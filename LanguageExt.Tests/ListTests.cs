@@ -414,5 +414,19 @@ namespace LanguageExtTests
             l = l.Remove(o1);
             Assert.Equal( 0, l.Count );
         }
+        
+        [Fact]
+        public void EqualsTest()
+        {
+            Assert.False( List( 1, 2, 3 ).Equals( List<int>()));
+            Assert.False( List<int>( ).Equals( List<int>(1,2,3)));
+            Assert.True( List<int>( ).Equals( List<int>()));
+            Assert.True( List<int>(1 ).Equals( List<int>(1)));
+            Assert.True( List<int>(1,2 ).Equals( List<int>(1,2)));
+            Assert.False( List<int>(1,2 ).Equals( List<int>(1,2,3)));
+            Assert.False( List<int>(1,2,3 ).Equals( List<int>(1,2)));
+        }
+        
+        
     }
 }
